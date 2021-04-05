@@ -14,7 +14,7 @@ teff_sun = 5777 # K
 taugran_sun = 210 # s
 teffred_sun = 8907 # K
 
-obs_available = ['kepler-sc', 'kepler-lc', 'tess-ffi']
+obs_available = ['kepler-sc', 'kepler-lc', 'tess-ffi', 'tess-2min']
 
 
 def from_phot(G, BP, RP, J, H, K, parallax, s=1., deltaT=1550., Amax_sun=2.5, D=1., obs='kepler-sc', T=30., pfalse=0.01, mass=1., AK=None, numax_limit=None, return_SNR=False):
@@ -302,6 +302,9 @@ def SNR_tot(G, BP, RP, J, H, K, lum, mass, teff, rad, numax, s=1., deltaT=1550, 
         inst = 'kepler'
     if obs.lower() == 'tess-ffi':
         cadence = 30.*60. #in s
+        inst = 'tess'
+    if obs.lower() == 'tess-2min':
+        cadence = 2.*60. #in s
         inst = 'tess'
     nu_nyq = 1e6/(2*cadence) #in uHz
     tP_tot = P_tot(lum, mass, teff, rad, s=s, deltaT=deltaT, Amax_sun=Amax_sun, nu_nyq=nu_nyq, D=D)
