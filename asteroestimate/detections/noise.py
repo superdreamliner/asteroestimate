@@ -32,13 +32,13 @@ def tess_noise_model(G, BP, RP, cadence):
     HISTORY:
         27/04/2020 - written - J T Mackereth (UoB)
     """
-    #Stassun model
+    # Stassun model
     color = BP-RP
     mag = G
     integration = cadence/(60.) #cadence back to mins!
     tessmag = mag - 0.00522555*color**3 + 0.0891337*color**2 - 0.633923*color + 0.0324473
-    #return get_oneSigmaNoise(integration, tessmag)
-    return noise_fit_27min(G)
+    return get_oneSigmaNoise(integration, tessmag)
+    # return noise_fit_27min(G)
 
 
 def noise_fit_27min(G):
@@ -73,3 +73,4 @@ def get_oneSigmaNoise(exp_time, TessMag):
     elif onesig < 60:
         onesig = 60.
     return onesig
+    
