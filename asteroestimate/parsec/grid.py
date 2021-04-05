@@ -3,16 +3,16 @@ from astropy.io import fits
 import os
 from scipy.stats import multivariate_normal, norm
 from scipy.interpolate import interp1d
-datapath = os.environ['ASTEROESTIMATE_DATA']
+# datapath = os.environ['ASTEROESTIMATE_DATA']
 
-def fullPARSECgrid():
-    """ load the pre-compiled grid with Chabrier (2001) IMF and global seismic params from scaling relations """
-    path = os.path.join(datapath,'full_parsec_grid.fits')
-    if os.path.exists(path):
-        file = fits.getdata(path)
-        return file
-    else:
-        raise IOError('PARSEC grid file is not present, either download or compile the grid using grid.compileParsec().')
+# def fullPARSECgrid():
+#     """ load the pre-compiled grid with Chabrier (2001) IMF and global seismic params from scaling relations """
+#     path = os.path.join(datapath,'full_parsec_grid.fits')
+#     if os.path.exists(path):
+#         file = fits.getdata(path)
+#         return file
+#     else:
+#         raise IOError('PARSEC grid file is not present, either download or compile the grid using grid.compileParsec().')
 
 def p_jhk(fullgrid, j,h,k,j_err,h_err,k_err, mask=None):
     "get the probability of each isochrone point for a given data point"
